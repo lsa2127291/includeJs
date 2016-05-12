@@ -1,0 +1,20 @@
+{
+  "name": "includeJs",
+  "author": {
+    "name": "lsa2127291",
+    "email": "lsa2127291@sina.com"
+  },
+  "license": "MIT",
+  "main": "include.js",
+  "scripts": {
+    "pretest": "eslint include.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lsa2127291/includeJs.git"
+  },
+  "devDependencies": {
+    "eslint": "^2.9.0",
+    "eslint-config-google": "^0.5.0"
+  }
+}
