@@ -4,3 +4,4 @@
 define(function(){
     return 'hello';
 });
+
