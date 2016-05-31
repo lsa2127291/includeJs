@@ -1,10 +1,10 @@
 {
-  "extends": "eslint:recommended",
-  "rules": {
-    "camelcase": 2,
-    "curly": 2,
-    "brace-style": [2, "1tbs", { "allowSingleLine": true }],
-    "semi": [2, "always"],
-    "space-infix-ops": 2
-  }
+    "extends": "eslint:recommended",
+    "rules": {
+        "camelcase": 2,
+        "curly": 2,
+        "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+        "semi": [2, "always"],
+        "space-infix-ops": 2
+    }
 }

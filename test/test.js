@@ -6,7 +6,9 @@ includejs.config({
     paths:{
         sample1:'module/sample1',
         sample2:'module/sample2',
-        commonjs:'module/commonjs'
+        commonjs:'module/commonjs',
+        a: 'module/a',
+        c: 'module/c'
     }
 });
 describe('amd',function(){
@@ -42,4 +44,14 @@ describe('commonjs',function(){
             done();
         });
     });
+});
+
+describe('recurrent dependency', function () {
+    it('can over', function (done) {
+        includejs.use('a', function (a) {
+            var over =  true;
+            should.exist(over);
+            done();
+        })
+    })
 });

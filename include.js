@@ -22,7 +22,6 @@
         module = [],
         persistedMod = [],
         anonymousModule = null;
-    //console.log('docUrl',baseUrl);
     function isObj(it){
         return ostring.call(it) === '[object Object]';
     }
@@ -242,6 +241,25 @@
         module[modId] = null;
     }
 
+    function isDepCircle (mod, id) {
+        var i, deps = mod.deps, depLen, depId;
+        console.log('id', id);
+        if (deps){
+            depLen = deps.length;
+            for (i = 0; i<depLen; i++) {
+                depId = getDepUrl(deps[i],'');
+                console.log('depId', depId);
+                if (depId === id) {
+                    return true;
+                }
+                if(isDepCircle(module[depId],id)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     function loadMod(id,callback,option){
         //console.log(option.modId);
         if(id === 'require'){
@@ -307,6 +325,11 @@
             if(!isFn(module[modId].callback)){
                 execMod(modId,callback);
                 return 2;
+            }
+            if (isDepCircle(module[modId],modId)) {
+                module[modId].status = 'error';
+                callback(module[modId].status);
+                return 1;
             }
             //递归使用模块
             use(module[modId].deps,function(){
